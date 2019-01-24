@@ -202,7 +202,7 @@ void dfa()
 
 int main(void)
 {
-    
+
     system("python3 re2nfa.py");
     return 0;
 }

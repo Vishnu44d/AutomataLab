@@ -35,7 +35,7 @@ char* getSubstring(char* str, int first, int forward)
 	return (subStr); 
 } 
 
-int isend(char s)
+int isterminal(char s)
 {
 	if(s==' '||s==';')
 		return true;
@@ -51,19 +51,18 @@ void getToken(char* str)
 	
 	while (forward <= len && first <= forward) 
 	{ 
-		if (isend(str[forward]) == false) 
+		if (isterminal(str[forward]) == false) 
 			forward++; 
 
-		if (isend(str[forward]) == true && first == forward) 
+		if (isterminal(str[forward]) == true && first == forward) 
 		{ 
 			forward++; 
 			first = forward; 
 		} 
-		else if (isend(str[forward]) == true && first != forward || (forward == len && first != forward)) 
+		else if (isterminal(str[forward]) == true && first != forward || (forward == len && first != forward)) 
 		{ 
 			char* subStr = getSubstring(str, first, forward - 1); 
-			printf("'%s' \n", subStr);
-			
+			printf("%s \n", subStr);
 			//strcpy(token[i].key,"Token");
 			//strcpy(token[i].value,subStr);
 			first = forward; 
@@ -76,9 +75,8 @@ void getToken(char* str)
 
 
 
-int main() 
-{ 
-
+int main(void) 
+{
 	char str[MAX];
     FILE *fptr;
     fptr = fopen("program.c", "r");
